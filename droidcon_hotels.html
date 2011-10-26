@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="leaflet/leaflet.css" />
+<head>
+    <script type="text/javascript" src="leaflet/leaflet.js"></script>
+</head>
+<body>
+
+<div id="map" style="height: 500px"></div>
+<script>
+var map = new L.Map('map');
+var cloudmadeUrl = 'http://{s}.tile.cloudmade.com/0cb2761ce981414391f2941dd891892c/997/256/{z}/{x}/{y}.png',
+    cloudmadeAttrib = 'Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade',
+    cloudmade = new L.TileLayer(cloudmadeUrl, {maxZoom: 18, attribution: cloudmadeAttrib});
+//var bangalore = new L.LatLng(12.934,77.608);
+var bangalore = new L.LatLng(12.99908,77.7020824);
+map.setView(bangalore, 13).addLayer(cloudmade);
+
+pane = map.getPanes()["popupPane"].className = "swinging leaflet-popup-pane";
+
+var LeafIcon = L.Icon.extend({
+    iconUrl: 'leaflet/images/blue-dot.png',
+    shadowUrl: 'leaflet/images/marker-shadow.png',
+    iconSize: new L.Point(32, 32),
+    shadowSize: new L.Point(40, 35),
+    iconAnchor: new L.Point(22, 43),
+    popupAnchor: new L.Point(-6, -30)
+});
+
+var blueIcon = new LeafIcon()
+     redIcon = new LeafIcon('leaflet/images/red-dot.png'),
+     greenIcon = new LeafIcon('leaflet/images/green-dot.png');
+
+var venue = new L.LatLng(12.99908,77.7020824);
+    var venue_marker = new L.Marker(venue);
+    map.addLayer(venue_marker);
+    var venue_popup = new L.Popup();
+    venue_marker.bindPopup("MLR Convention Center").openPopup();
+
+var seven = new L.LatLng(12.990549, 77.689819); //12.971619,77.665451
+    var seven_marker = new L.Marker(seven,{icon: redIcon});
+    map.addLayer(seven_marker);
+seven_marker.bindPopup("<b><a href='http://maps.google.com/maps?q=Seven+Hotel+39%2F5,\
++Outer+Ring+Rd,+Doddanekundi&hl=en&sll=37.0625,-95.677068&sspn=38.008397,86.572266&vpsrc=0&hq=Seven+Hotel+39%2F5,+Outer+Ring+Rd,&hnear=Doddanekundi,+Bengaluru,+Bengaluru+Rural,+Karnataka,+India&t=m&z=16'>Seven Hotel 39/5, Outer Ring Rd, Doddanekundi</a></b><br />From venue: 2.4km<br />+91 80 4262 7777<br /><a href='http://sevenhotel.com'>sevenhotel.com</a>");
+
+var radha = new L.LatLng(12.977335, 77.713079);  //12.980972,77.669606
+    var radha_marker = new L.Marker(radha, {icon: redIcon});
+    map.addLayer(radha_marker);
+radha_marker.bindPopup("<b><a href='http://maps.google.com/maps?q=RADHA+HOMETEL+Whitefield,&hl=en&sll=12.981447,77.668091&sspn=0.011437,0.021136&vpsrc=0&t=m&z=14'>Radha Hometel, Whitefield, 136, / 137, EPIP Industrial Area</a></b><br />From venue: 2.8 km<br />+91 80 6622 6969<br /><a href='http://hometel.co.in'>hometel.co.in</a>");
+
+var fortune = new L.LatLng(12.977251, 77.714410);  //12.980972,77.669606
+    var fortune_marker = new L.Marker(fortune, {icon: redIcon});
+    map.addLayer(fortune_marker);
+fortune_marker.bindPopup("<b><a href='http://maps.google.com/maps/place?cid=8405021949132824639&q=Fortune+Select+Trinity,+Bengaluru,+Karnataka,+India&hl=en&ved=0CBgQ-gswAA&sa=X&ei=8e6iTvKbIOHomAWbm-n6Dw'>Fortune Select Trinity, No.134-136 EPIP Area</a></b><br />From venue: 2.8 km<br />+91 80 4020 0200<br /><a href='http://fortunehotels.in'>fortunehotels.in</a>");
+
+var premier = new L.LatLng(12.979091,77.709131);  //12.980972,77.669606
+    var premier_marker = new L.Marker(premier, {icon: redIcon});
+    map.addLayer(premier_marker);
+premier_marker.bindPopup("<b><a href='http://maps.google.com/maps?q=Premier+Inn,+ITPL+Main+Road,+Hudi,+Bengaluru,+Karnataka,+India&hl=en&sll=12.98549,77.691708&sspn=0.091497,0.169086&vpsrc=0&hq=Premier+Inn,&hnear=ITPL+Main+Rd,+Hudi,+Bengaluru,+Bengaluru+Rural,+Karnataka,+India&t=m&z=16'>Premier Inn No 3-A, ITPL Main Road</a></b><br />From venue: 2.1 km<br /> +91 80 4348 8888<br /><a href='http://premierinn.in'>premierinn.in</a>");
+
+var ginger = new L.LatLng(12.976833, 77.718530);  //12.980972,77.669606
+    var ginger_marker = new L.Marker(ginger, {icon: redIcon});
+    map.addLayer(ginger_marker);
+ginger_marker.bindPopup("<b><a href='http://local.google.com/maps?q=Ginger+Hotel,+2nd+Rd,+Whitefield,+Bengaluru,+Bangalore,+Karnataka,+India&hl=en&sll=12.974236,77.656576&sspn=0.091502,0.169086&vpsrc=0&hq=Ginger+Hotel,+2nd+Rd,+Whitefield,+Bengaluru,+Bangalore,+Karnataka,+India&t=m&z=15'> Ginger Hotel Whitefield, 128, EPIP Phase II</a></b><br />From venue: 3.0 km<br /> +91 80 6666 3333<br /><a href='http://gingerhotels.com'>gingerhotels.com</a>");
+
+var mark = new L.LatLng(12.972651, 77.718272);  //12.980972,77.669606
+    var mark_marker = new L.Marker(mark, {icon: redIcon});
+    map.addLayer(mark_marker);
+mark_marker.bindPopup("<b><a href='http://maps.google.com/maps?q=The+Mark+Boulevard,+EPIP+Zone,+Brookefield,+Bengaluru,+Karnataka,+India&hl=en&sll=12.981778,77.708914&sspn=0.011437,0.021136&vpsrc=0&hq=The+Mark+Boulevard,+EPIP+Zone,+Brookefield,+Bengaluru,+Karnataka,+India&t=m&z=15'>The Mark Boulevard EPIP Zone</a></b><br />From venue: 3.5 km<br /> +91 80 4198 5555<br /><a href='http://themarkboulevard.com'>themarkboulevard.com</a>");
+
+var unique = new L.LatLng(12.990403, 77.722564);  //12.980972,77.669606
+    var unique_marker = new L.Marker(unique, {icon: blueIcon});
+    map.addLayer(unique_marker);
+unique_marker.bindPopup("<b><a href='http://maps.google.com/maps?q=Unique+Residency+Sai+Colony+Kadugodi,+Hanuman+Road,+Whitefield&hl=en&ll=12.994187,77.726212&spn=0.045747,0.084543&sll=13.003248,77.755375&sspn=0.011436,0.021136&vpsrc=6&hq=Unique+Residency+Sai+Colony+Kadugodi,+Hanuman+Road,+Whitefield&t=m&z=14'>Unique Residency Sai Colony Sadugudi, Hanuman Road, Whitefield</a></b><br />From venue: 2.5 km<br /> +91 80 2845 7654<br />");
+
+var keys = new L.LatLng(12.979970, 77.710075);  //12.980972,77.669606
+    var keys_marker = new L.Marker(keys, {icon: redIcon});
+    map.addLayer(keys_marker);
+keys_marker.bindPopup("<b><a href='http://maps.google.com/maps?q=Keys+Hotel+Whitefield+6,+Graphite+India+Rd,+EPIP+Zone,+Hudi,+Bengaluru,&hl=en&sll=12.884772,77.697372&sspn=0.366137,0.676346&vpsrc=0&hq=Keys+Hotel+Whitefield+6,+Graphite+India+Rd,+EPIP+Zone,+Hudi,+Bengaluru,&t=m&z=15'>Keys Hotel Whitefield 6, Graphite India Rd, EPIP Zone</a></b><br />From venue: 2.4 km<br /> +91 80 3945 1000<br /><a href='http://keyshotels.com'>keyshotels.com</a>");
+
+var kr = new L.LatLng(13.008154,77.687116);  //12.980972,77.669606
+    var kr_marker = new L.Marker(kr, {icon: blueIcon});
+    map.addLayer(kr_marker);
+kr_marker.bindPopup("<b><a href='http://local.google.com/maps/place?cid=14685243447576403481&q=KR+inn,+hotel+No.45+Old+madras+Road,+Krishnarajapuram.,+Bangalore&hl=en&ved=0CDEQ-gswAA&sa=X&ei=1O-nTvqwA6zwmAX40rn7Bg'>KR inn No.45, Opp to Ramdas Park ( Gate No.1), Old madras Road, Krishnarajapuram., Bengaluru</a></b><br />From venue: 1.7 km<br /> +91 80 2561 5991<br />");
+
+var belair = new L.LatLng(12.958474,77.709038);  //12.980972,77.669606
+    var belair_marker = new L.Marker(belair, {icon: blueIcon});
+    map.addLayer(belair_marker);
+belair_marker.bindPopup("<b><a href='http://local.google.com/maps?q=The+Belair+Hotel+Silver+Springs+Layout,+Airport-Varthur+Road&hl=en&ll=12.966085,77.706385&spn=0.045752,0.084543&sll=13.010203,77.698445&sspn=0.022872,0.042272&vpsrc=6&doflg=ptk&hq=The+Belair+Hotel+Silver+Springs+Layout,+Airport-Varthur+Road&t=m&z=14'>The Belair Hotel Silver Springs Layout, Airport-Varthur Road</a></b><br />From venue: 4.7 km<br /> +91 80 4162 5555<br /><a href='http://ibchotels-resorts.com'>ibchotels-resorts.com</a>");
+
+var chetan = new L.LatLng(12.952033, 77.708702);  //12.980972,77.669606
+    var chetan_marker = new L.Marker(chetan, {icon: blueIcon});
+    map.addLayer(chetan_marker);
+chetan_marker.bindPopup("<b><a href='http://local.google.com/maps?q=Hotel+Chetan+International+6+Cross+Gandhi+Nagar,+Bengaluru&hl=en&ll=12.95518,77.710226&spn=0.005719,0.010568&sll=12.95839,77.71102&sspn=0.022877,0.042272&vpsrc=6&doflg=ptk&hq=Hotel+Chetan+International+6+Cross&hnear=Gandhi+Nagar,+Bengaluru,+Bengaluru+Rural,+Karnataka,+India&t=m&z=17'>Hotel Chetan International 6 Cross Gandhi Nagar</a></b><br />From venue: 5.0 km<br /> +91 80 4153 1000 <br />");
+
+var stamford = new L.LatLng(12.965008,77.716425);  //12.980972,77.669606
+    var stamford_marker = new L.Marker(stamford, {icon: blueIcon});
+    map.addLayer(stamford_marker);
+stamford_marker.bindPopup("<b><a href='http://local.google.com/maps?q=STAMFORD+RESIDENCY+Cosmos+Mall,+Vaswani+Matrix,+ITPL+Main+Rd&hl=en&ll=12.965134,77.716277&spn=0.005719,0.010568&sll=12.954882,77.710183&sspn=0.00286,0.005284&vpsrc=6&doflg=ptk&t=m&z=17'>Stamford Residency, Cosmos Mall, Vaswani Matrix, ITPL Main Rd, Brookefield</a></b><br />From venue: 4.1 km<br /> +91 80 4007 1777<br /><a href='http://stamfordresidency.com'>stamfordresidency.com</a>");
+
+var basil = new L.LatLng(12.966807,77.64127);  //12.980972,77.669606
+    var basil_marker = new L.Marker(basil, {icon: redIcon});
+    map.addLayer(basil_marker);
+basil_marker.bindPopup("<b><a href='http://local.google.com/maps?q=The+Basil+Ikon+Hotel,+100+Ft+Rd,+Bengaluru&hl=en&ll=12.966692,77.641239&spn=0.005719,0.010568&sll=12.967424,77.643471&sspn=0.091504,0.169086&vpsrc=6&doflg=ptk&hq=The+Basil+Ikon+Hotel,+100+Ft+Rd,+Bengaluru&t=m&z=17'>The Basil Ikon Hotel, 100 Ft. Rd.</a></b><br />From venue: 1 km<br /> +91 80 4040 1313<br /><a href='http://basilhotels.com'>basilhotels.com</a>");
+
+var aranha = new L.LatLng(12.964224,77.638639);  //12.980972,77.669606
+    var aranha_marker = new L.Marker(aranha, {icon: greenIcon});
+    map.addLayer(aranha_marker);
+aranha_marker.bindPopup("<b><a href='http://local.google.com/maps?q=Aranha+Homes,+Domlur+Bengaluru,+Karnataka&hl=en&ll=12.964392,77.6386&spn=0.011438,0.021136&sll=12.969619,77.616586&sspn=0.045752,0.084543&vpsrc=0&doflg=ptk&hq=Aranha+Homes,&hnear=Domlur,+Bengaluru,+Bengaluru+Rural,+Karnataka,+India&t=m&z=16&iwloc=A'>Aranha Homes, 148, 2nd Cross, 4th Main, Domlur</a></b><br />From venue: 7.9 km<br /> +91 80 2535 2020<br /><a href='http://aranha.in'>aranha.in</a>");
+
+var empire = new L.LatLng(12.976248,77.602504);  //12.980972,77.669606
+    var empire_marker = new L.Marker(empire, {icon: blueIcon});
+    map.addLayer(empire_marker);
+empire_marker.bindPopup("<b><a href='http://local.google.com/maps?q=Empire+Restaurant,+Church+Street+Bangalore&hl=en&sll=12.991418,77.627518&sspn=0.091495,0.169086&vpsrc=0&doflg=ptk&hq=Empire+Restaurant,&hnear=Church+St,+Bengaluru,+Karnataka,+India&t=m&z=16'>Hotel Empire International, Church St</a></b><br />From venue: 11 km<br /> +91 80 2559 3743<br /><a href='http://hotelempire.in'>hotelempire.in</a>");
+
+var ajantha = new L.LatLng(12.972149,77.615787);  //12.980972,77.669606
+    var ajantha_marker = new L.Marker(ajantha, {icon: blueIcon});
+    map.addLayer(ajantha_marker);
+ajantha_marker.bindPopup("<b><a href='http://local.google.com/maps?q=Ajantha+Cyber+Point,+MG+Road&hl=en&ll=12.971376,77.615726&spn=0.011438,0.021136&sll=12.974533,77.609096&sspn=0.011438,0.021136&vpsrc=6&doflg=ptk&hq=Ajantha+Cyber+Point,+MG+Road&t=m&z=16'>Ajantha Cyber Point, MG Rd</a></b><br />From venue: 9.8 km<br /> +91 80 2558 4321<br /><a href='http://hotelajanta.com'>hotelajanta.com</a>");
+
+/*
+var marker1ll = new L.LatLng(12.9324,77.608);
+    var marker1 = new L.Marker(marker1ll,  {icon: blueIcon});
+    map.addLayer(marker1);*/
+/*
+var marker2ll = new L.LatLng(12.9330,77.60);
+    var marker2 = new L.Marker(marker2ll, {icon: greenIcon});
+    map.addLayer(marker2);*/
+
+// marker1.bindPopup("Hey!").openPopup();
+/*
+map.on('click', clicked);
+var popup = new L.Popup();
+*/
+/*
+function clicked(e) {
+    var latlngStr = e.latlng.lat.toFixed(3) + ', ' + e.latlng.lng.toFixed(3);
+            
+    popup.setLatLng(e.latlng);
+    popup.setContent("You clicked the map at " + latlngStr);
+    
+    map.openPopup(popup);
+}*/
+/*
+ function clicked(e) {
+  var pstr = e.latlng.lat.toFixed(6)+", "+e.latlng.lng.toFixed(6);
+  popup.setLatLng(e.latlng);
+  popup.setContent("You are at: "+pstr);
+  map.openPopup(popup);
+ }
+*/
+</script>
+</body>
+</html>
