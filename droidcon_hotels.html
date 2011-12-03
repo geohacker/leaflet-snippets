@@ -6,15 +6,15 @@
 </head>
 <body>
 
-<div id="map" style="height: 500px"></div>
+<div id="map" style="width:550px; height:250px"></div>
 <script>
 var map = new L.Map('map');
 var cloudmadeUrl = 'http://{s}.tile.cloudmade.com/0cb2761ce981414391f2941dd891892c/997/256/{z}/{x}/{y}.png',
     cloudmadeAttrib = 'Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade',
     cloudmade = new L.TileLayer(cloudmadeUrl, {maxZoom: 18, attribution: cloudmadeAttrib});
-//var bangalore = new L.LatLng(12.934,77.608);
-var bangalore = new L.LatLng(12.99908,77.7020824);
-map.setView(bangalore, 13).addLayer(cloudmade);
+//var bangalore = new L.LatLng(10.378004, 70.190846);
+var bangalore = new L.LatLng(12.991177, 77.671967);
+map.setView(bangalore, 12).addLayer(cloudmade);
 
 pane = map.getPanes()["popupPane"].className = "swinging leaflet-popup-pane";
 
@@ -133,10 +133,9 @@ var marker2ll = new L.LatLng(12.9330,77.60);
     map.addLayer(marker2);*/
 
 // marker1.bindPopup("Hey!").openPopup();
-/*
+
 map.on('click', clicked);
 var popup = new L.Popup();
-*/
 /*
 function clicked(e) {
     var latlngStr = e.latlng.lat.toFixed(3) + ', ' + e.latlng.lng.toFixed(3);
@@ -146,14 +145,13 @@ function clicked(e) {
     
     map.openPopup(popup);
 }*/
-/*
  function clicked(e) {
   var pstr = e.latlng.lat.toFixed(6)+", "+e.latlng.lng.toFixed(6);
   popup.setLatLng(e.latlng);
   popup.setContent("You are at: "+pstr);
   map.openPopup(popup);
  }
-*/
+
 </script>
 </body>
 </html>
