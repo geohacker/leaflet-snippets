@@ -11,7 +11,7 @@ for row in data:
         lon = row[3]
         name = row[0]
         pop = row[1]
-        marker = "var markerll"+id+"=new L.LatLng("+lat+","+lon+");var marker"+id+"=new L.Marker(markerll"+id+");map.addLayer(marker"+id+");marker"+id+".bindPopup('"+pop+"');"
+        marker = "var markerll"+id+"=new L.LatLng("+lat+","+lon+");var marker"+id+"=new L.Marker(markerll"+id+");map.addLayer(marker"+id+");marker"+id+".bindPopup('"+name+pop+"');"
         print marker
         marker_file.write(marker)
 
