@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="leaflet/leaflet.css" />
+<head>
+    <script type="text/javascript" src="leaflet/leaflet.js"></script>
+</head>
+<body>
+
+<div id="map" style="width:550px; height:250px"></div>
+<script>
+var map = new L.Map('map');
+var cloudmadeUrl = 'http://{s}.tile.cloudmade.com/0cb2761ce981414391f2941dd891892c/997/256/{z}/{x}/{y}.png',
+    cloudmadeAttrib = 'Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade',
+    cloudmade = new L.TileLayer(cloudmadeUrl, {maxZoom: 18, attribution: cloudmadeAttrib});
+var bangalore = new L.LatLng(12.9967,77.70219); // geographical point (longitude and latitude)
+map.setView(bangalore, 15).addLayer(cloudmade);
+
+var marker1ll = new L.LatLng(12.99908,77.7020824);
+    var marker1 = new L.Marker(marker1ll);
+    map.addLayer(marker1);
+
+
+marker1.bindPopup("MLR Convention Center").openPopup();
+
+
+</script>
+</body>
+</html>
